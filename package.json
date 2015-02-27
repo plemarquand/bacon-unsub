@@ -1,6 +1,6 @@
 {
   "name": "bacon-unsub",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Unsubscribe from observables through delegate methods.",
   "author": {
     "name": "Paul LeMarquand",
@@ -37,5 +37,12 @@
   },
   "scripts": {
     "test": "grunt"
-  }
+  },
+  "files": [
+    "README.md",
+    "dist",
+    "test",
+    "index.js",
+    "Gruntfile.js"
+  ]
 }
