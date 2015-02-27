@@ -1,0 +1,41 @@
+{
+  "name": "bacon-unsub",
+  "version": "0.1.0",
+  "description": "Unsubscribe from observables through delegate methods.",
+  "author": {
+    "name": "Paul LeMarquand",
+    "email": "plemarquand@gmail.com"
+  },
+  "repository": "plemarquand/bacon-unsub",
+  "license": "MIT",
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "bacon-unsub",
+    "bacon",
+    "baconjs",
+    "unsub",
+    "unsubscribe",
+    "delegate"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "baconjs": "^0.7.50",
+    "chai": "^2.1.0",
+    "grunt-babel": "^4.0.0",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-jshint": "^0.11.0",
+    "grunt-contrib-nodeunit": "^0.4.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-mocha-cli": "^1.11.0",
+    "jshint-stylish": "^1.0.0",
+    "load-grunt-tasks": "^1.0.0",
+    "sinon": "^1.12.2",
+    "time-grunt": "^1.0.0"
+  },
+  "scripts": {
+    "test": "grunt"
+  }
+}
