@@ -3,8 +3,9 @@
 > Unsubscribe from observables through delegate methods.
 
 Using Bacon with traditional Object Oriented frameworks can be hard. These frameworks typically
-rely methods with side effects. Disposing of your observables based on your chosen framework's
-component lifecylce can be tedious.
+rely on methods with side effects. Take Backbone for example. When the `remove()` method is called
+you often want to stop your running observables. This involves saving reference to each unsubscribe method
+returned from `onValue`, `onError`, `onEnd` or `subscribe` and then calling each. This is tedious; bacon-unsub to the rescue.
 
 Bacon-unsub is a small utility module that augments Bacon's `onValue`, `onError` `onEnd`, and `subscribe` methods with
 an `unsubOn` method that automatically unsubscribes the observable from the source whenever that method
