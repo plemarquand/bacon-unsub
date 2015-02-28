@@ -27,44 +27,31 @@ require('bacon-unsub')(Bacon);
 
 // Mock object that has a destroy method
 var frameworkObject = {
-	destroy: function() {
-		console.log('Framework Destroy');
-	}
+	destroy: () => console.log('Framework Destroy')
 };
 
 // Repeat numbers until unsubscribed
 Bacon.repeatedly(200, [1,2,3,4,5])
-    .onValue(function(value) {
-    	console.log('Value:', value);
-    })
+    .onValue(value => console.log('Value:', value))
     .unsubOn(frameworkObject, 'destroy');
 
 // Call the delegate method after 2 seconds.
 // Values are no longer printed after 'Framework Destroy'.
-setTimeout(function() {
-	frameworkObject.destroy();
-}, 2000);
+setTimeout(() => frameworkObject.destroy(), 2000);
 ```
 
 Multiple `unsubOn` calls pointing to the same delegate method will all get unsubscribed when the delegate is called.
 
 ```js
 Bacon.repeatedly(200, [1,2,3,4,5])
-    .onValue(function(value) {
-    	console.log('# Value:', value);
-    })
+    .onValue(value => console.log('# Value:', value))
     .unsubOn(frameworkObject, 'destroy');
 
 Bacon.repeatedly(200, ['foo', 'bar'])
-    .onValue(function(value) {
-    	console.log('String Value:', value);
-    })
+    .onValue(value => console.log('String Value:', value))
     .unsubOn(frameworkObject, 'destroy');
 
-setTimeout(function() {
-	// Unsubscribes both observables
-	frameworkObject.destroy();
-}, 2000);
+setTimeout(() => frameworkObject.destroy(), 2000);
 ```
 
 The following example integrates with [Backbone](http://backbonejs.org/). When the [Backbone.View.remove](http://backbonejs.org/#View-remove) method is called the subscription created in the `initialize` method is automatically unsubscribed.
@@ -80,8 +67,8 @@ var FooView = Backbone.View.extend({
 
 		// Update our view every 200ms with a new value until unsubscribed.
         Bacon.repeatedly(200, [1,2,3,4,5])
-            .onValue(function(value) {
-            	console.log('Value:', value);
+            .onValue(value => {
+                console.log('Value:', value);
                 el.innerText = value;
             })
             .unsubOn(this, 'remove');
@@ -97,9 +84,7 @@ var view = new FooView();
 document.body.appendChild(view.el);
 
 // Remove it after 2 seconds.
-setTimeout(function() {
-	view.remove();
-}, 2000);
+setTimeout(() => view.remove(), 2000);
 
 ```
 
